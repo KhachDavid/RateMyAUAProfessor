@@ -6,10 +6,16 @@ import CourseList from "./CourseContainers/CourseList";
 import useStyles from '../Post/styles';
 import {useDispatch} from "react-redux";
 import {deleteProfessor, rateProfessor} from "../../../actions/posts";
+import { Rating } from 'react-simple-star-rating'
+
 
 const Post = ({post, setCurrentId}) => {
     const styles = useStyles();
     const dispatch = useDispatch();
+
+    const handleRating = (rate) => {
+        
+    }
 
     return (
         <li className={styles.parentLi}>
@@ -23,6 +29,9 @@ const Post = ({post, setCurrentId}) => {
                 <CourseList courses={post.courses}/>
                 <div className={styles.rating}>
                     {defineColor(post.rating)}
+                </div>
+                <div>
+                <Rating onClick={handleRating} ratingValue={post.countOfRatings} /* Available Props */ />
                 </div>
                 <div className={styles.ratingCount}>
                     number of ratings: {post.countOfRatings}
