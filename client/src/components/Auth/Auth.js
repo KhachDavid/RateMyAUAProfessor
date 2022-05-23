@@ -36,7 +36,7 @@ const Auth = () => {
     };
 
     return (
-        <Container>
+        <Container component="main">
             <Paper elevation={3}>
                 <Typography variant="h5">{isSignup ? 'Sign Up' : 'Sign In'}</Typography>
                 <form onSubmit={handleSubmit}>
