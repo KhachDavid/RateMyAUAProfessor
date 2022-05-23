@@ -1,45 +1,45 @@
 import React from "react";
-import { Card, CardActions, CardContent, Button, CardMedia, Typography } from '@mui/material'
+import {CardActions, Button} from '@mui/material'
 import CourseList from "./CourseContainers/CourseList";
-import useStyles from '../Post/styles';
-import { useDispatch } from "react-redux";
-import { deleteProfessor, rateProfessor } from "../../../actions/posts";
+import useStyles from '../Professor/styles';
+import {useDispatch} from "react-redux";
+import {deleteProfessor, rateProfessor} from "../../../actions/professors";
 import {Rating} from 'react-simple-star-rating'
 
 
-const Post = ({ post, setCurrentId }) => {
+const Professor = ({professor, setCurrentId}) => {
     const styles = useStyles();
     const dispatch = useDispatch();
 
     const handleRating = (rate) => {
-        dispatch(rateProfessor(post._id, rate));
+        dispatch(rateProfessor(professor._id, rate));
     }
 
     return (
         <li className={styles.parentLi}>
             <div>
-                <img src={post.imageFile} alt="Image Not Found" className={styles.img} />
+                <img src={professor.imageFile} alt="Image Not Found" className={styles.img}/>
             </div>
             <div id={styles.texts}>
                 <div className={styles.name}>
-                    {post.fullName}
+                    {professor.fullName}
                 </div>
-                <CourseList courses={post.courses} />
+                <CourseList courses={professor.courses}/>
                 <div className={styles.rating}>
-                    {defineColor(post.rating)}
+                    {defineColor(professor.rating)}
                 </div>
                 <div>
-                    <Rating onClick={handleRating} ratingValue={post.countOfRatings} /* Available Props */ />
+                    <Rating onClick={handleRating} ratingValue={professor.countOfRatings} /* Available Props */ />
                 </div>
                 <div className={styles.ratingCount}>
-                    number of ratings: {post.countOfRatings}
+                    number of ratings: {professor.countOfRatings}
                 </div>
             </div>
             <CardActions className={styles.cardActions}>
-                <Button size="small" color="primary" onClick={() => setCurrentId(post._id)}>
+                <Button size="small" color="primary" onClick={() => setCurrentId(professor._id)}>
                     Edit
                 </Button>
-                <Button size="small" color="secondary" onClick={() => dispatch(deleteProfessor(post._id))}>
+                <Button size="small" color="secondary" onClick={() => dispatch(deleteProfessor(professor._id))}>
                     Delete
                 </Button>
             </CardActions>
@@ -65,4 +65,4 @@ const Post = ({ post, setCurrentId }) => {
 }
 
 
-export default Post;
+export default Professor;

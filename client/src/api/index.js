@@ -8,11 +8,11 @@ API.interceptors.request.use((req) => {
     return req;
 })
 
-export const fetchPosts = () => API.get("/posts");
-export const createProfessor = (newProfessor) => API.post("/posts", newProfessor);
-export const updateProfessor = (id, updatedProfessor) => API.patch("/posts/" + id, updatedProfessor);
-export const rateProfessor = (id, newRating) => API.patch("/posts/" + id + "/rateProfessor", newRating);
-export const deleteProfessor = (id) => API.delete("/posts/" + id);
+export const fetchProfessors = () => API.get("/professors");
+export const createProfessor = (newProfessor) => API.post("/professors", newProfessor);
+export const updateProfessor = (id, updatedProfessor) => API.patch("/professors/" + id, updatedProfessor);
+export const rateProfessor = (id, newRating) => API.patch("/professors/" + id + "/rateProfessor", newRating);
+export const deleteProfessor = (id) => API.delete("/professors/" + id);
 
 export const signIn = (formData) => API.post('user/signin', formData);
 export const signUp = (formData) => API.post('user/signup', formData);

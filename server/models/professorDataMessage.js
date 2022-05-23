@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const postSchema = mongoose.Schema({
+const professorSchema = mongoose.Schema({
     fullName: String,
     rating: {
         type: Number,
@@ -14,6 +14,6 @@ const postSchema = mongoose.Schema({
     imageFile: String
 });
 
-const PostItem = mongoose.model('PostItem', postSchema)
+const ProfessorItem = mongoose.model('ProfessorItem', professorSchema)
 
-export default PostItem;
+export default ProfessorItem;

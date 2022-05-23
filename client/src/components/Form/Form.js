@@ -5,34 +5,34 @@ import FileBase64 from 'react-file-base64';
 import { useDispatch, useSelector } from "react-redux";
 
 import { Button, Paper, TextField, Typography } from "@mui/material";
-import { createProfessor, updateProfessor } from "../../actions/posts";
+import { createProfessor, updateProfessor } from "../../actions/professors";
 
 
 const Form = ({ currentId, setCurrentId }) => {
-    const [profesorData, setProfesorData] = useState({ fullName: '', courses: '', imageFile: '' });
+    const [professorData, setProfessorData] = useState({ fullName: '', courses: '', imageFile: '' });
     const classes = useStyles();
     const dispatch = useDispatch();
 
-    const profesor = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
+    const professor = useSelector((state) => currentId ? state.professors.find((p) => p._id === currentId) : null);
 
     useEffect(() => {
-        if (profesor) setProfesorData(profesor)
-    }, [profesor])
+        if (professor) setProfessorData(professor)
+    }, [professor])
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         if (currentId) {
-            dispatch(updateProfessor(currentId, profesorData));
+            dispatch(updateProfessor(currentId, professorData));
         } else {
-            dispatch(createProfessor(profesorData));
+            dispatch(createProfessor(professorData));
         }
         clearAll();
     }
 
     const clearAll = () => {
         setCurrentId(null);
-        setProfesorData({ fullName: '', courses: '', imageFile: '' })
+        setProfessorData({ fullName: '', courses: '', imageFile: '' })
     }
 
     return (
@@ -47,8 +47,8 @@ const Form = ({ currentId, setCurrentId }) => {
                         variant="outlined"
                         label="Full Name"
                         fullWidth
-                        value={profesorData.fullName}
-                        onChange={(e) => setProfesorData({ ...profesorData, fullName: e.target.value })}
+                        value={professorData.fullName}
+                        onChange={(e) => setProfessorData({ ...professorData, fullName: e.target.value })}
                         style={{
                             paddingBottom: '10px',
                         }}
@@ -58,8 +58,8 @@ const Form = ({ currentId, setCurrentId }) => {
                         variant="outlined"
                         label="Courses"
                         fullWidth
-                        value={profesorData.courses}
-                        onChange={(e) => setProfesorData({ ...profesorData, courses: e.target.value })}
+                        value={professorData.courses}
+                        onChange={(e) => setProfessorData({ ...professorData, courses: e.target.value })}
                         style={{
                             paddingBottom: '10px',
                         }}
@@ -68,7 +68,7 @@ const Form = ({ currentId, setCurrentId }) => {
                         <FileBase64
                             type='file'
                             multiple={false}
-                            onDone={({ base64 }) => setProfesorData({ ...profesorData, imageFile: base64 })}
+                            onDone={({ base64 }) => setProfessorData({ ...professorData, imageFile: base64 })}
                         />
                     </div>
                     <Button className={classes.buttonSubmit} variant="container" size="large" type="submit" style={{backgroundColor: "#1976d2", color: 'white', marginBottom: '10px'}} fullWidth>

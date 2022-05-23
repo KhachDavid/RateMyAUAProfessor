@@ -1,34 +1,34 @@
-import PostItem from "../models/postMessage.js";
+import ProfessorItem from "../models/professorDataMessage.js";
 import mongoose from "mongoose";
 
-export const getPosts = async (req, res) => {
+export const getProfessors = async (req, res) => {
     try {
-        const postMessages = await PostItem.find();
-        console.log(postMessages);
-        res.status(200).json(postMessages);
+        const professorMessages = await ProfessorItem.find();
+        console.log(professorMessages);
+        res.status(200).json(professorMessages);
     } catch (error) {
         res.status(404).json({message: error.message});
     }
 }
 
-export const createPost = async (req, res) => {
-    const post = req.body;
-    const newPost = new PostItem(post);
+export const createProfessor = async (req, res) => {
+    const professor = req.body;
+    const newProfessor = new ProfessorItem(professor);
     try {
-        await newPost.save();
-        res.status(201).json(newPost);
+        await newProfessor.save();
+        res.status(201).json(newProfessor);
     } catch (error) {
         res.status(409).json({message: error.message});
     }
 }
 
-export const updatePost = async (req, res) => {
+export const updateProfessor = async (req, res) => {
     const {id: _id} = req.params;
-    const post = req.body;
+    const professor = req.body;
     if (!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No instructor found with that id');
 
-    const updatedPost = await PostItem.findByIdAndUpdate(_id, {...post, _id}, {new: true});
-    res.json(updatedPost)
+    const updatedProfessor = await ProfessorItem.findByIdAndUpdate(_id, {...professor, _id}, {new: true});
+    res.json(updatedProfessor)
 }
 
 export const rateProfessor = async (req, res) => {
@@ -47,21 +47,21 @@ export const rateProfessor = async (req, res) => {
 
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No instructor found with that id');
 
-    const post = await PostItem.findById(id);
+    const professor = await ProfessorItem.findById(id);
 
-    const updatedPost = await PostItem.findByIdAndUpdate(id, {
-        rating: await getCalculatedRating(newRatingValue, post.rating, post.countOfRatings),
-        countOfRatings: post.countOfRatings + 1
+    const updatedProfessor = await ProfessorItem.findByIdAndUpdate(id, {
+        rating: await getCalculatedRating(newRatingValue, professor.rating, professor.countOfRatings),
+        countOfRatings: professor.countOfRatings + 1
     }, {new: true});
 
-    res.json(updatedPost)
+    res.json(updatedProfessor)
 }
 
-export const deletePost = async (req, res) => {
+export const deleteProfessor = async (req, res) => {
     const {id} = req.params;
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No instructor found with that id');
 
-    await PostItem.findByIdAndRemove(id);
+    await ProfessorItem.findByIdAndRemove(id);
     res.json({message: 'Deleted!'});
 }
 

@@ -40,7 +40,7 @@ const App = () => {
                     <Toolbar>
                         {user ? (
                             <div>
-                                <h6>{user.result.name}</h6>
+                                <h3>{user.result.name}</h3>
                                 <Routes>
                                     <Route path="/" exact element={
                                         <Button color="secondary" onClick={logout}>Log Out</Button>
@@ -49,10 +49,9 @@ const App = () => {
                                 </Routes>
                             </div>
                         ) : (
-                            <Button component={Link} to="/auth" variant="contained" color="secondary">Log In</Button>
+                            <Button component={Link} to="/auth" variant="contained" color="primary">Log In</Button>
                         )
                         }
-
                     </Toolbar>
                 </AppBar>
                 <Routes>
