@@ -5,9 +5,10 @@ import Form from "../Form/Form";
 import {useDispatch} from "react-redux";
 import {getProfessors} from "../../actions/professors";
 
-const Home = () => {
+const Home = (user) => {
     const [currentId, setCurrentId] = useState(0);
     const dispatch = useDispatch();
+
 
     useEffect(() => {
         dispatch(getProfessors());
@@ -20,9 +21,12 @@ const Home = () => {
                     <Grid item xs={12} sm={7}>
                         <Professors setCurrentId={setCurrentId}/>
                     </Grid>
-                    <Grid item xs={12} sm={4}>
-                        <Form currentId={currentId} setCurrentId={setCurrentId}/>
-                    </Grid>
+                    {console.log(user)}
+                    {user ?
+                        (<Grid item xs={12} sm={4}>
+                            <Form currentId={currentId} setCurrentId={setCurrentId}/>
+                        </Grid>) : null
+                    }
                 </Grid>
             </Container>
         </Grow>

@@ -32,14 +32,14 @@ const Professor = ({professor, setCurrentId}) => {
                     <Rating onClick={handleRating} ratingValue={professor.countOfRatings} /* Available Props */ />
                 </div>
                 <div className={styles.ratingCount}>
-                    number of ratings: {professor.countOfRatings}
+                    Number of votes: {professor.countOfRatings}
                 </div>
             </div>
             <CardActions className={styles.cardActions}>
-                <Button size="small" color="primary" onClick={() => setCurrentId(professor._id)}>
+                <Button size="small" style={{backgroundColor: "#1976d2", color: 'white', marginBottom: '10px'}} onClick={() => setCurrentId(professor._id)}>
                     Edit
                 </Button>
-                <Button size="small" color="secondary" onClick={() => dispatch(deleteProfessor(professor._id))}>
+                <Button size="small" style={{backgroundColor: "red", color: 'white', marginBottom: '10px'}} onClick={() => dispatch(deleteProfessor(professor._id))}>
                     Delete
                 </Button>
             </CardActions>

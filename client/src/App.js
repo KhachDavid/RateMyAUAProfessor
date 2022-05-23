@@ -27,6 +27,7 @@ const App = () => {
                 <AppBar className={classes.appBar} position="static" color="inherit">
                     <Typography className={classes.heading} variant="h2" align="center"
                                 style={{
+                                    marginTop: 10,
                                     display: 'flex',
                                     justifyContent: 'center',
                                     alignItems: 'center',
@@ -43,7 +44,13 @@ const App = () => {
                                 <h3>{user.result.name}</h3>
                                 <Routes>
                                     <Route path="/" exact element={
-                                        <Button color="secondary" onClick={logout}>Log Out</Button>
+                                        <Button
+                                            style={{
+                                                backgroundColor: "#f5c11f",
+                                                color: 'white',
+                                                marginBottom: '10px'
+                                            }}
+                                            onClick={logout}>Log Out</Button>
                                     }>
                                     </Route>
                                 </Routes>
@@ -55,7 +62,7 @@ const App = () => {
                     </Toolbar>
                 </AppBar>
                 <Routes>
-                    <Route path="/" exact element={<Home/>}/>
+                    <Route path="/" exact element={<Home user={user}/>}/>
                     <Route path="/auth" exact element={<Auth/>}/>
                 </Routes>
             </Container>

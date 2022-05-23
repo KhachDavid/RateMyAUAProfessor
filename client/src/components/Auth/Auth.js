@@ -36,9 +36,9 @@ const Auth = () => {
     };
 
     return (
-        <Container component="main">
-            <Paper elevation={3}>
-                <Typography variant="h5">{isSignup ? 'Sign Up' : 'Sign In'}</Typography>
+        <Container style={{width:500, marginBottom:10, padding:10}} component="main">
+            <Paper style={{margin:10}} elevation={3}>
+                <Typography variant="h5" style={{marginTop:10, marginBottom:10, textAlign:"center"}}>{isSignup ? 'Sign Up' : 'Sign In'}</Typography>
                 <form onSubmit={handleSubmit}>
                     <Grid container spacing={2}>
                         {

@@ -75,7 +75,7 @@ const Form = ({ currentId, setCurrentId }) => {
                         Submit
                     </Button>
 
-                    <Button variant="contained" color="secondary" size="small" onClick={clearAll}>
+                    <Button variant="contained" style={{backgroundColor: "#f5c11f", color: 'white', marginBottom: '10px'}} size="small" onClick={clearAll}>
                         Clear all fields
                     </Button>
 
