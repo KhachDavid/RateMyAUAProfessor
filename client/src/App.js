@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {Container, AppBar, Typography, Grow, Grid, Toolbar, Avatar, Button} from '@mui/material'
+import {Container, AppBar, Typography, Toolbar, Button} from '@mui/material'
 import auaLogo from './images/aua_logo.png'
 import {useDispatch} from "react-redux";
 import useStyles from "./styles";
@@ -10,9 +10,17 @@ import Home from "./components/Home/Home";
 const App = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
-    const [currentId, setCurrentId] = useState(null);
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
-    const user = null;
+    const logout = () => {
+        dispatch({type: 'LOGOUT'})
+        setUser(null);
+    }
+
+    useEffect(() => {
+        const token = user?.token;
+        setUser(JSON.parse(localStorage.getItem('profile')));
+    }, []);
 
     return (
         <BrowserRouter>
@@ -25,8 +33,8 @@ const App = () => {
                     <Toolbar>
                         {user ? (
                             <div>
-                                {/*<img alt="Couldn't load" src={user.result.imageUrl}/>*/}
-                                {/*<h6>{user.result.name}</h6>*/}
+                                <img alt="Couldn't load" src={user.result.imageUrl}/>
+                                <h6>Babken</h6>
                                 <Button color="secondary">Log Out</Button>
                             </div>
                         ) : (

@@ -33,9 +33,13 @@ export const updatePost = async (req, res) => {
 
 export const rateProfessor = async (req, res) => {
     const {id} = req.params;
+
+    if (!req.userId) return res.json({message: 'Not Authenticated!'});
+
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No instructor found with that id');
 
     const post = await PostItem.findById(id);
+
     const updatedPost = await PostItem.findByIdAndUpdate(id, {
         rating: await getCalculatedRating(5, post.rating, post.countOfRatings),
         countOfRatings: post.countOfRatings + 1
