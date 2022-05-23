@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from "react";
-import {Container, AppBar, Typography, Grow, Grid} from '@mui/material'
+import React, { useState, useEffect } from "react";
+import { Container, AppBar, Typography, Grow, Grid } from '@mui/material'
 import auaLogo from './images/aua_logo.png'
-import {useDispatch} from "react-redux";
-import {getPosts} from "./actions/posts";
+import { useDispatch } from "react-redux";
+import { getPosts } from "./actions/posts";
 import Posts from "./components/Posts/Posts";
 import Form from "./components/Form/Form";
 import useStyles from "./styles";
@@ -19,8 +19,15 @@ const App = () => {
     return (
         <Container maxWidth="lg">
             <AppBar className={classes.appBar} position="static" color="inherit">
-                <Typography className={classes.heading} variant="h2" align="center">
-                    <img className={classes.image} src={auaLogo} alt="AUA Logo" height="60"/>
+                <Typography className={classes.heading} variant="h2" align="center" style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    color: "#1976d2",
+                }}>
+                    <img className={classes.image} src={auaLogo} alt="AUA Logo" height="60" style={{
+                        paddingRight: '10px',
+                    }}/>
                     Rate My AUA Professor
                 </Typography>
             </AppBar>
@@ -28,10 +35,10 @@ const App = () => {
                 <Container>
                     <Grid container justify="space-between" alignItems="stretch" spacing={3}>
                         <Grid item xs={12} sm={7}>
-                            <Posts setCurrentId={setCurrentId}/>
+                            <Posts setCurrentId={setCurrentId} />
                         </Grid>
                         <Grid item xs={12} sm={4}>
-                            <Form currentId={currentId} setCurrentId={setCurrentId}/>
+                            <Form currentId={currentId} setCurrentId={setCurrentId} />
                         </Grid>
 
                     </Grid>
