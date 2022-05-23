@@ -50,11 +50,11 @@ const Post = ({ post, setCurrentId }) => {
 
     function defineColor(rating) {
         // take the first three digits of the rating
-        if (rating >= 8) {
+        if (rating >= 4) {
             return (
                 <span className={styles.above8}>{"Average rating: " + rating.toString().slice(0, 3)}</span>
             )
-        } else if (rating >= 5) {
+        } else if (rating >= 2.5) {
             return (
                 <span className={styles.above5}>{"Average rating: " + rating.toString().slice(0, 3)}</span>
             )

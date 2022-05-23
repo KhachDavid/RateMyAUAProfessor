@@ -9,7 +9,7 @@ export default makeStyles({
     parentLi: {
         position: "relative",
         height: '11rem',
-        width: 400,
+        width: 500,
         margin: 2,
         marginTop: 5,
         transition: 'box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
@@ -24,7 +24,7 @@ export default makeStyles({
     img: {
         padding: 5,
         height: 100,
-        width: '25%',
+        width: 100,
         display: 'block',
         float: 'left'
     },
