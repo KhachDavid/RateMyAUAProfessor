@@ -6,7 +6,7 @@ import CourseList from "./CourseContainers/CourseList";
 import useStyles from '../Post/styles';
 import {useDispatch} from "react-redux";
 import {deleteProfessor, rateProfessor} from "../../../actions/posts";
-import { Rating } from 'react-simple-star-rating'
+import {Rating} from 'react-simple-star-rating'
 
 
 const Post = ({post, setCurrentId}) => {
@@ -14,7 +14,7 @@ const Post = ({post, setCurrentId}) => {
     const dispatch = useDispatch();
 
     const handleRating = (rate) => {
-        
+
     }
 
     return (
@@ -31,7 +31,7 @@ const Post = ({post, setCurrentId}) => {
                     {defineColor(post.rating)}
                 </div>
                 <div>
-                <Rating onClick={handleRating} ratingValue={post.countOfRatings} /* Available Props */ />
+                    <Rating onClick={handleRating} ratingValue={post.countOfRatings} /* Available Props */ />
                 </div>
                 <div className={styles.ratingCount}>
                     number of ratings: {post.countOfRatings}
@@ -49,24 +49,6 @@ const Post = ({post, setCurrentId}) => {
                 </Button>
             </CardActions>
         </li>
-
-        // <div>
-        //     <p>{post.fullName}</p>
-        //     <p>{post.rating}</p>
-        //     <p>{post.countOfRatings}</p>
-        //     <img className={classes.media} src={post.imageFile} alt="photo"/>
-        //     <CardActions className={classes.cardActions}>
-        //         <Button size="small" color="primary" onClick={() => {
-        //         }}>
-        //             Edit
-        //         </Button>
-        //         <Button size="small" color="secondary" onClick={() => {
-        //         }}>
-        //             Delete
-        //         </Button>
-        //
-        //     </CardActions>
-        // </div>
     )
 
     function defineColor(rating) {

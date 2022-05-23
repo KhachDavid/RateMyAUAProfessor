@@ -33,8 +33,7 @@ const App = () => {
                     <Toolbar>
                         {user ? (
                             <div>
-                                <img alt="Couldn't load" src={user.result.imageUrl}/>
-                                <h6>Babken</h6>
+                                <h6>{user.result.name}</h6>
                                 <Routes>
                                     <Route path="/" exact element={
                                         <Button color="secondary" onClick={logout}>Log Out</Button>
