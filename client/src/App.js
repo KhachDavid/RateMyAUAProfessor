@@ -1,43 +1,47 @@
 import React, {useState, useEffect} from "react";
-import {Container, AppBar, Typography, Grow, Grid} from '@mui/material'
+import {Container, AppBar, Typography, Grow, Grid, Toolbar, Avatar, Button} from '@mui/material'
 import auaLogo from './images/aua_logo.png'
 import {useDispatch} from "react-redux";
-import {getPosts} from "./actions/posts";
-import Posts from "./components/Posts/Posts";
-import Form from "./components/Form/Form";
 import useStyles from "./styles";
+import {BrowserRouter, Route, Routes, Link} from "react-router-dom";
+import Auth from "./components/Auth/Auth";
+import Home from "./components/Home/Home";
 
 const App = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const [currentId, setCurrentId] = useState(null);
 
-    useEffect(() => {
-        dispatch(getPosts());
-    }, [currentId, dispatch]);
+    const user = null;
 
     return (
-        <Container maxWidth="lg">
-            <AppBar className={classes.appBar} position="static" color="inherit">
-                <Typography className={classes.heading} variant="h2" align="center">
-                    <img className={classes.image} src={auaLogo} alt="AUA Logo" height="60"/>
-                    Rate My AUA Professor
-                </Typography>
-            </AppBar>
-            <Grow in>
-                <Container>
-                    <Grid container justify="space-between" alignItems="stretch" spacing={3}>
-                        <Grid item xs={12} sm={7}>
-                            <Posts setCurrentId={setCurrentId}/>
-                        </Grid>
-                        <Grid item xs={12} sm={4}>
-                            <Form currentId={currentId} setCurrentId={setCurrentId}/>
-                        </Grid>
+        <BrowserRouter>
+            <Container maxWidth="lg">
+                <AppBar className={classes.appBar} position="static" color="inherit">
+                    <Typography className={classes.heading} variant="h2" align="center">
+                        <img className={classes.image} src={auaLogo} alt="AUA Logo" height="60"/>
+                        Rate My AUA Professor
+                    </Typography>
+                    <Toolbar>
+                        {user ? (
+                            <div>
+                                {/*<img alt="Couldn't load" src={user.result.imageUrl}/>*/}
+                                {/*<h6>{user.result.name}</h6>*/}
+                                <Button color="secondary">Log Out</Button>
+                            </div>
+                        ) : (
+                            <Button component={Link} to="/auth" color="secondary">Log In</Button>
+                        )
+                        }
 
-                    </Grid>
-                </Container>
-            </Grow>
-        </Container>
+                    </Toolbar>
+                </AppBar>
+                <Routes>
+                    <Route path="/" exact element={<Home/>}/>
+                    <Route path="/auth" exact element={<Auth/>}/>
+                </Routes>
+            </Container>
+        </BrowserRouter>
     );
 }
 
