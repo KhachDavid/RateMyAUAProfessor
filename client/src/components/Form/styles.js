@@ -5,8 +5,13 @@ export default makeStyles(() => ({
         margin: 2,
     },
     paper: {
-        padding: 2,
+        padding: 15,
+
+        '&:hover': {
+            boxShadow: '0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 5px 8px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%)',
+        },    
     },
+
     form: {
         display: 'flex',
         flexWrap: 'wrap',
@@ -14,7 +19,10 @@ export default makeStyles(() => ({
     },
     fileInput: {
         width: '97%',
-        margin: '10px 0',
+        padding: '20px 0',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     buttonSubmit: {
         color: 'green',
