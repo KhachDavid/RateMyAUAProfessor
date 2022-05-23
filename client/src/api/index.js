@@ -11,7 +11,7 @@ API.interceptors.request.use((req) => {
 export const fetchPosts = () => API.get("/posts");
 export const createProfessor = (newProfessor) => API.post("/posts", newProfessor);
 export const updateProfessor = (id, updatedProfessor) => API.patch("/posts/" + id, updatedProfessor);
-export const rateProfessor = (id) => API.patch("/posts/" + id + "/rateProfessor");
+export const rateProfessor = (id, newRating) => API.patch("/posts/" + id + "/rateProfessor", newRating);
 export const deleteProfessor = (id) => API.delete("/posts/" + id);
 
 export const signIn = (formData) => API.post('user/signin', formData);

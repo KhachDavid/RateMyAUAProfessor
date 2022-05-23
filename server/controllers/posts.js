@@ -36,12 +36,21 @@ export const rateProfessor = async (req, res) => {
 
     if (!req.userId) return res.json({message: 'Not Authenticated!'});
 
+    // read the request body
+    const newRating = req.body;
+
+    // get the first key of newRating object
+    const newRatingKey = Object.keys(newRating)[0];
+
+    // convert it to a number out of 5 currently it is out of 100
+    const newRatingValue = (newRatingKey / 100) * 5;
+
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No instructor found with that id');
 
     const post = await PostItem.findById(id);
 
     const updatedPost = await PostItem.findByIdAndUpdate(id, {
-        rating: await getCalculatedRating(5, post.rating, post.countOfRatings),
+        rating: await getCalculatedRating(newRatingValue, post.rating, post.countOfRatings),
         countOfRatings: post.countOfRatings + 1
     }, {new: true});
 

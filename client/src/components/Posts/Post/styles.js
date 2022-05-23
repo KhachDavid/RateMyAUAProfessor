@@ -1,48 +1,6 @@
-import {makeStyles} from '@mui/styles';
+import { makeStyles } from '@mui/styles';
 
 export default makeStyles({
-    // media: {
-    //   height: 100,
-    //   backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    //   backgroundBlendMode: 'darken',
-    // },
-    // border: {
-    //   border: 'solid',
-    // },
-    // fullHeightCard: {
-    //   height: '100%',
-    // },
-    // card: {
-    //   display: 'flex',
-    //   flexDirection: 'column',
-    //   justifyContent: 'space-between',
-    //   borderRadius: '15px',
-    //   height: '100%',
-    //   position: 'relative',
-    // },
-    // overlay: {
-    //   position: 'absolute',
-    //   top: '20px',
-    //   left: '20px',
-    //   color: 'white',
-    // },
-    // overlay2: {
-    //   position: 'absolute',
-    //   top: '20px',
-    //   right: '20px',
-    //   color: 'white',
-    // },
-    // grid: {
-    //   display: 'flex',
-    // },
-    // details: {
-    //   display: 'flex',
-    //   justifyContent: 'space-between',
-    //   margin: '20px',
-    // },
-    // title: {
-    //   padding: '0 16px',
-    // },
     cardActions: {
         position: 'absolute',
         right: 0,
@@ -50,16 +8,23 @@ export default makeStyles({
     },
     parentLi: {
         position: "relative",
-        height: 110,
-        width: 400,
+        height: '11rem',
+        width: 500,
         margin: 2,
         marginTop: 5,
-        border: '0.5px solid rgba(0, 0, 0, 0.5)',
+        transition: 'box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+        borderRadius: '4px',
+        boxShadow: '0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)',
+
+        '&:hover': {
+            boxShadow: '0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 5px 8px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%)',
+        },
     },
+
     img: {
         padding: 5,
         height: 100,
-        width: '25%',
+        width: 100,
         display: 'block',
         float: 'left'
     },
